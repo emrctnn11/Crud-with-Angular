@@ -1,0 +1,46 @@
+ <div class="container">
+  <h1>ADD UPDATE PERSONAL</h1>
+  <br>
+  <p>Please click on it to change the data.</p>
+
+  <div class="cards-container">
+    <div class="cards-form">
+      <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="">Name</label>
+          <input type="text" name="cardName" [(ngModel)]="card.cardholderName">
+        </div>
+        <div class="form-group">
+          <label for="">Surname</label>
+          <input type="text" name="cardSurname" [(ngModel)]="card.cardNumber">
+        </div>
+        <div class="form-group form-group-inline">
+          <div>
+            <label for="">Month</label>
+            <input type="text" name="birth-month" [(ngModel)]="card.cvc">
+          </div>
+          <div>
+            <label for="">Year</label>
+            <input type="text" name="birth-year" [(ngModel)]="card.expiryMonth">
+          </div>
+        </div>
+        <div class="form-group">
+          <button>Save</button>
+        </div>
+
+      </form>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card-row" *ngFor="let card of cards">
+        <div class="card-row-details" (click)="populateForm(card)">
+          <span>{{ card.cardholderName }}</span>
+          <span>{{ card.cardNumber }}</span>
+        </div>
+        <div class="card-row-action">
+          <a (click)="deleteCard(card.id)"><i class="fa-solid fa-trash-can"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
